@@ -4,6 +4,7 @@ import json
 import os
 import requests
 from pypdf import PdfReader
+from pydantic import BaseModel
 import gradio as gr
 
 
@@ -76,8 +77,9 @@ tools = [{"type": "function", "function": record_user_details_json},
 class Me:
 
     def __init__(self):
-        self.openai = OpenAI()
-        self.name = "Ed Donner"
+        # self.openai = OpenAI()
+        self.gemini = OpenAI(api_key=os.getenv("GOOGLE_API_KEY"), base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
+        self.name = "Vladislav Chelakov"
         reader = PdfReader("me/linkedin.pdf")
         self.linkedin = ""
         for page in reader.pages:
@@ -111,12 +113,38 @@ If the user is engaging in discussion, try to steer them towards getting in touc
         system_prompt += f"\n\n## Summary:\n{self.summary}\n\n## LinkedIn Profile:\n{self.linkedin}\n\n"
         system_prompt += f"With this context, please chat with the user, always staying in character as {self.name}."
         return system_prompt
+
+    def evaluator_system_prompt(self):
+        evaluator_system_prompt = f"You are an evaluator that decides whether a response to a question is acceptable. \
+You are provided with a conversation between a User and an Agent. Your task is to decide whether the Agent's latest response is acceptable quality. \
+The Agent is playing the role of {self.name} and is representing {self.name} on their website. \
+The Agent has been instructed to be professional and engaging, as if talking to a potential client or future employer who came across the website. \
+The Agent has been provided with context on {self.name} in the form of their summary and LinkedIn details. Here's the information: \
+{self.summary} \
+{self.linkedin} \
+With this context, please evaluate the latest response, replying with whether it is acceptable and your feedback."
+        return evaluator_system_prompt
+
+    def evaluator_user_prompt(self, reply, message, history):
+        evaluator_user_prompt = f"Here's the conversation between the User and the Agent: \n\n{history}\n\n"
+        evaluator_user_prompt += f"Here's the latest message from the User: \n\n{message}\n\n"
+        evaluator_user_prompt += f"Here's the latest response from the Agent: \n\n{reply}\n\n"
+        evaluator_user_prompt += "Please evaluate the response, replying with whether it is acceptable and your feedback."
+        return evaluator_user_prompt
+
+    def rerun(self, reply, message, history, feedback):
+        updated_system_prompt = self.system_prompt() + "\n\n## Previous answer rejected\nYou just tried to reply, but the quality control rejected your reply\n"
+        updated_system_prompt += f"## Your attempted answer:\n{reply}\n\n"
+        updated_system_prompt += f"## Reason for rejection:\n{feedback}\n\n"
+        messages = [{"role": "system", "content": updated_system_prompt}] + history + [{"role": "user", "content": message}]
+        response = self.gemini.chat.completions.create(model="gemini-2.5-flash", messages=messages)
+        return response.choices[0].message.content
     
     def chat(self, message, history):
         messages = [{"role": "system", "content": self.system_prompt()}] + history + [{"role": "user", "content": message}]
         done = False
         while not done:
-            response = self.openai.chat.completions.create(model="gpt-4o-mini", messages=messages, tools=tools)
+            response = self.gemini.chat.completions.create(model="gemini-2.5-flash", messages=messages, tools=tools)
             if response.choices[0].finish_reason=="tool_calls":
                 message = response.choices[0].message
                 tool_calls = message.tool_calls

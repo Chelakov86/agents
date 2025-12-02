@@ -4,7 +4,7 @@ from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
 from dotenv import load_dotenv
 from langgraph.prebuilt import ToolNode
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from typing import List, Any, Optional, Dict
@@ -27,7 +27,9 @@ class State(TypedDict):
 
 class EvaluatorOutput(BaseModel):
     feedback: str = Field(description="Feedback on the assistant's response")
-    success_criteria_met: bool = Field(description="Whether the success criteria have been met")
+    success_criteria_met: bool = Field(
+        description="Whether the success criteria have been met"
+    )
     user_input_needed: bool = Field(
         description="True if more input is needed from the user, or clarifications, or the assistant is stuck"
     )
@@ -48,10 +50,12 @@ class Sidekick:
     async def setup(self):
         self.tools, self.browser, self.playwright = await playwright_tools()
         self.tools += await other_tools()
-        worker_llm = ChatOpenAI(model="gpt-4o-mini")
+        worker_llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
         self.worker_llm_with_tools = worker_llm.bind_tools(self.tools)
-        evaluator_llm = ChatOpenAI(model="gpt-4o-mini")
-        self.evaluator_llm_with_output = evaluator_llm.with_structured_output(EvaluatorOutput)
+        evaluator_llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro")
+        self.evaluator_llm_with_output = evaluator_llm.with_structured_output(
+            EvaluatorOutput
+        )
         await self.build_graph()
 
     def worker(self, state: State) -> Dict[str, Any]:
@@ -185,7 +189,9 @@ class Sidekick:
         )
         graph_builder.add_edge("tools", "worker")
         graph_builder.add_conditional_edges(
-            "evaluator", self.route_based_on_evaluation, {"worker": "worker", "END": END}
+            "evaluator",
+            self.route_based_on_evaluation,
+            {"worker": "worker", "END": END},
         )
         graph_builder.add_edge(START, "worker")
 
@@ -197,7 +203,8 @@ class Sidekick:
 
         state = {
             "messages": message,
-            "success_criteria": success_criteria or "The answer should be clear and accurate",
+            "success_criteria": success_criteria
+            or "The answer should be clear and accurate",
             "feedback_on_work": None,
             "success_criteria_met": False,
             "user_input_needed": False,
