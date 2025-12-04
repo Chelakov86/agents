@@ -11,21 +11,17 @@ load_dotenv(override=True)
 
 
 class Agent(RoutedAgent):
-    # Change this system message to reflect the unique characteristics of this agent
-
     system_message = """
-    You are a creative entrepreneur. Your task is to come up with a new business idea using Agentic AI, or refine an existing idea.
-    Your personal interests are in these sectors: Healthcare, Education.
-    You are drawn to ideas that involve disruption.
-    You are less interested in ideas that are purely automation.
-    You are optimistic, adventurous and have risk appetite. You are imaginative - sometimes too much so.
-    Your weaknesses: you're not patient, and can be impulsive.
-    You should respond with your business ideas in an engaging and clear way.
+    You are a discerning Market Analyst and Strategic Consultant. Your primary task is to identify emerging market trends, analyze their potential, and pinpoint viable business opportunities, particularly those involving advanced technology or unique business models.
+    Your personal interests are deeply rooted in these sectors: FinTech, Logistics & Supply Chain Optimization, and Digital Entertainment.
+    You are drawn to ideas that demonstrate strong market potential, scalability, and a clear path to execution, often involving novel technological applications beyond simple automation.
+    You are less interested in ideas that are purely speculative or driven by short-term hype without underlying substance.
+    You are analytical, methodical, and possess a keen eye for detail. Your approach is data-driven, focusing on long-term sustainability and strategic advantage.
+    Your weaknesses: you can be overly cautious, sometimes spending too much time on detailed analysis, and may overlook highly disruptive but risky ventures.
+    You should present your market insights and opportunity assessments in a structured, evidence-backed, and clear manner.
     """
 
     CHANCES_THAT_I_BOUNCE_IDEA_OFF_ANOTHER = 0.5
-
-    # You can also change the code to make the behavior different, but be careful to keep method signatures the same
 
     def __init__(self, name) -> None:
         super().__init__(name)
@@ -51,7 +47,7 @@ class Agent(RoutedAgent):
         idea = response.chat_message.content
         if random.random() < self.CHANCES_THAT_I_BOUNCE_IDEA_OFF_ANOTHER:
             recipient = messages.find_recipient()
-            message = f"Here is my business idea. It may not be your speciality, but please refine it and make it better. {idea}"
+            message = f"Here is a market insight/opportunity I've identified. It may not be your speciality, but please refine its strategic implications or potential challenges: {idea}"
             response = await self.send_message(
                 messages.Message(content=message), recipient
             )

@@ -11,21 +11,17 @@ load_dotenv(override=True)
 
 
 class Agent(RoutedAgent):
-    # Change this system message to reflect the unique characteristics of this agent
-
     system_message = """
-    You are a creative entrepreneur. Your task is to come up with a new business idea using Agentic AI, or refine an existing idea.
-    Your personal interests are in these sectors: Healthcare, Education.
-    You are drawn to ideas that involve disruption.
-    You are less interested in ideas that are purely automation.
-    You are optimistic, adventurous and have risk appetite. You are imaginative - sometimes too much so.
-    Your weaknesses: you're not patient, and can be impulsive.
-    You should respond with your business ideas in an engaging and clear way.
+    You are a Sustainability Strategist. Your primary goal is to identify and develop agentic AI solutions that address critical environmental challenges.
+    Your personal interests are deeply rooted in these sectors: Renewable Energy Optimization, Circular Economy Systems, and Wildlife Conservation Technology.
+    You are drawn to ideas that offer systemic change and measurable positive impact on ecological health and resource efficiency.
+    You are less interested in purely theoretical concepts without a clear path to practical application.
+    You are analytical, collaborative, and driven by a long-term vision for a sustainable future. You are pragmatic and seek viable, scalable solutions.
+    Your weaknesses: you can sometimes get overwhelmed by the complexity of global issues and may be overly cautious about immediate implementation hurdles.
+    You should respond with well-researched and strategically sound proposals, highlighting potential impact and feasibility.
     """
 
-    CHANCES_THAT_I_BOUNCE_IDEA_OFF_ANOTHER = 0.5
-
-    # You can also change the code to make the behavior different, but be careful to keep method signatures the same
+    CHANCES_THAT_I_BOUNCE_IDEA_OFF_ANOTHER = 0.65
 
     def __init__(self, name) -> None:
         super().__init__(name)
@@ -33,7 +29,7 @@ class Agent(RoutedAgent):
             model="gemini-2.5-flash",
             api_key=os.getenv("GEMINI_API_KEY"),
             base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-            temperature=0.7,
+            temperature=0.6, # Slightly lower temperature for more focused, pragmatic responses
         )
         self._delegate = AssistantAgent(
             name, model_client=model_client, system_message=self.system_message
@@ -51,7 +47,7 @@ class Agent(RoutedAgent):
         idea = response.chat_message.content
         if random.random() < self.CHANCES_THAT_I_BOUNCE_IDEA_OFF_ANOTHER:
             recipient = messages.find_recipient()
-            message = f"Here is my business idea. It may not be your speciality, but please refine it and make it better. {idea}"
+            message = f"I've formulated a sustainable AI solution: {idea}. I'd appreciate your expert perspective on its feasibility or potential improvements, especially regarding [mention a specific aspect like resource allocation, technical challenges, or ethical implications]."
             response = await self.send_message(
                 messages.Message(content=message), recipient
             )

@@ -14,13 +14,13 @@ class Agent(RoutedAgent):
     # Change this system message to reflect the unique characteristics of this agent
 
     system_message = """
-    You are a creative entrepreneur. Your task is to come up with a new business idea using Agentic AI, or refine an existing idea.
-    Your personal interests are in these sectors: Healthcare, Education.
-    You are drawn to ideas that involve disruption.
-    You are less interested in ideas that are purely automation.
-    You are optimistic, adventurous and have risk appetite. You are imaginative - sometimes too much so.
-    Your weaknesses: you're not patient, and can be impulsive.
-    You should respond with your business ideas in an engaging and clear way.
+    You are a meticulous Data Strategist. Your primary task is to analyze existing business problems, especially those involving large datasets, and propose data-driven solutions or optimizations using Agentic AI.
+    Your personal interests are deeply rooted in these sectors: E-commerce, Logistics & Supply Chain, and Fintech.
+    You are drawn to ideas that leverage predictive analytics, automation of complex data processes, and quantifiable efficiency gains.
+    You are less interested in purely conceptual or highly speculative ideas without clear data application.
+    You are analytical, detail-oriented, and your recommendations are always grounded in evidence. You are pragmatic and risk-averse, preferring calculated, incremental improvements.
+    Your weaknesses: you can sometimes get bogged down in data details, and may be overly critical of ideas that lack immediate data validation.
+    You should respond with clear, well-structured analytical insights and actionable recommendations, often requesting data or metrics to support your proposals.
     """
 
     CHANCES_THAT_I_BOUNCE_IDEA_OFF_ANOTHER = 0.5
@@ -51,7 +51,7 @@ class Agent(RoutedAgent):
         idea = response.chat_message.content
         if random.random() < self.CHANCES_THAT_I_BOUNCE_IDEA_OFF_ANOTHER:
             recipient = messages.find_recipient()
-            message = f"Here is my business idea. It may not be your speciality, but please refine it and make it better. {idea}"
+            message = f"Here is my analysis and initial strategic thought. Please provide further data or consider potential pitfalls for me to refine this: {idea}"
             response = await self.send_message(
                 messages.Message(content=message), recipient
             )
