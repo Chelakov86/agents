@@ -1,44 +1,49 @@
 # Banoffee Pie Recipe
 
 ## Description
-Banoffee pie is a British dessert made with banana slices, whipped cream, and a caramel sauce. This recipe features a buttery graham cracker crust, rich dulce de leche, and homemade whipped cream.
+This low-effort dessert combines a crunchy digestive biscuit crust, a thick, dark dulce de leche filling, sweet sliced bananas, and a mountain of unsweetened whipped cream. It's a British classic that's perfect for any dinner party.
 
-## Prep Time
-15 minutes
-
-## Cook Time
-15 minutes
-
-## Additional Time
-2 hours 15 minutes (for chilling)
-
-## Total Time
-2 hours 45 minutes
-
-## Servings
-8
-
-## Yield
-1 (9-inch) pie
+## Recipe Details
+*   **Prep Time:** 10 mins
+*   **Cook Time:** 4 hrs
+*   **Cooling Time:** 60 mins
+*   **Total Time:** 5 hrs 10 mins
+*   **Servings:** 8
 
 ## Ingredients
-*   1 (13.4 ounce) can dulce de leche
-*   1 1/2 cups graham cracker crumbs
-*   1/3 cup white sugar
-*   2 teaspoons ground ginger (Optional)
-*   6 tablespoons butter, melted
-*   3 bananas, sliced
-*   1 1/2 cups heavy cream
-*   3 tablespoons powdered sugar
-*   chocolate shavings (Optional)
-*   espresso powder (Optional)
+
+**For the Filling:**
+*   One 14-ounce can sweetened condensed milk, label and glue removed
+
+**For the Crust:**
+*   300 g (10 1/2 ounces) digestive biscuits, such as McVitie's
+*   3/4 teaspoon Diamond Crystal kosher salt, divided; for table salt, use half as much by volume
+*   140 g unsalted butter (about 5 ounces; 10 tablespoons), melted and slightly cooled
+
+**For the Topping:**
+*   3 medium bananas (about 16 1/2 ounces; 465 g), peeled and cut into 1/2-inch slices
+*   2 cups (480 ml) heavy cream
+*   One 2-ounce (57 g) dark chocolate bar, for garnishing (optional)
 
 ## Directions
-1.  **Prepare the crust:** Preheat oven to 350°F (175°C). In a medium bowl, mix graham cracker crumbs, white sugar, optional ground ginger, and melted butter. Press mixture into an ungreased 9-inch fluted tart pan with a removable bottom or a 9-inch pie plate.
-2.  **Bake the crust:** Bake for 12 to 15 minutes, or until set. Cool on a wire rack for 15 minutes.
-3.  **Assemble the pie:** Spread dulce de leche evenly in the cooled crust. Arrange banana slices on top of the dulce de leche.
-4.  **Make whipped cream:** In a large bowl, beat heavy cream and powdered sugar until stiff peaks form (about 3 minutes). Spread the whipped cream over the bananas.
-5.  **Chill and serve:** Refrigerate the pie for at least 2 hours, or preferably overnight. Before serving, sprinkle with chocolate shavings, cocoa powder, and/or espresso powder, if desired.
 
-## Storage
-Cover the pie and store it in the refrigerator for up to five days. Freezing is not recommended as it may not thaw well, but it can be frozen for up to three months if necessary.
+### For the Filling:
+1.  Set a wire or steamer rack inside a 6- to 8-quart pot. Set unopened condensed milk can on its side on the rack, then fill pot with room-temperature water, making sure water level is at least 2 inches above can. (The can must remain fully submerged during the entirety of simmering to prevent it from warping and splitting, which can result in the can rupturing and injuries.)
+2.  Set pot over high heat and bring to a simmer (avoid a vigorous boil). Reduce heat to maintain simmer and cook for 4 hours; check pot every 30 minutes to ensure water level stays above can, adding boiling water as necessary to keep can under 2 inches of water.
+3.  Remove pot from heat and allow can to cool to room temperature in water, at least 1 hour. Do not attempt to open can while still hot; this can cause pressurized hot dulce de leche to spray dangerously.
+4.  When dulce de leche is cool, open can and pour into a medium bowl. Whisk in 1/2 teaspoon salt until well-combined. Set aside.
+
+### For the Crust:
+5.  While dulce de leche is cooking, prepare the crust. Adjust oven rack to center and preheat oven to 350ºF (175ºC). In the bowl of a food processor, pulse together digestive biscuits until sandy. (Alternatively, place digestive biscuits in a zip-top bag and, using a rolling pin, crush biscuits until sandy.) Using a flexible spatula, transfer biscuit mixture to a medium bowl and stir in salt. Pour melted butter over biscuits, tossing to evenly coat crumbs in butter. Pour crumbs into a 9-inch tart pan and spread into an even layer across bottom and up the sides of the pan. Using your fingers and a flat-bottomed measuring cup, press crumbs firmly to form a compact, even layer. Bake until crust is lightly golden and smells buttery, 25 to 30 minutes. Transfer finished tart shell to a wire rack and let cool completely, about 30 minutes, before carefully removing from pan. Set aside until ready to fill.
+
+### Assembly:
+6.  In the bowl of a stand mixer fitted with the whisk attachment, whip heavy cream on medium speed until medium-soft peaks form, about 6 minutes. (Alternatively, use your favorite method for whipping cream, such as a whisk or handheld beaters.)
+7.  Pour dulce de leche filling into crust and top with sliced bananas. Using a flexible or offset spatula, cover pie evenly with whipped cream. If garnishing with shaved chocolate, place chocolate bar on a microwave-safe plate and heat until just warm enough to leave a fingerprint, about 10 seconds. Using a Y vegetable peeler, shave sides of chocolate bar over the pie, moving the peeler in an up-and-down motion to create small chocolate curls. Serve immediately.
+
+## Special Equipment
+*   Food processor
+*   Stand mixer
+
+## Make-Ahead and Storage
+*   Banoffee pie can be made 1 day in advance through step 6. Whip the cream and top the pie with it when ready to serve.
+*   Once topped with whipped cream, banoffee pie can be loosely wrapped in plastic and refrigerated for up to 3 days.
