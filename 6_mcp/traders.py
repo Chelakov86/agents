@@ -19,7 +19,7 @@ from mcp_params import trader_mcp_server_params, researcher_mcp_server_params
 load_dotenv(override=True)
 
 deepseek_api_key = os.getenv("DEEPSEEK_API_KEY")
-google_api_key = os.getenv("GOOGLE_API_KEY")
+gemini_api_key = os.getenv("GEMINI_API_KEY")
 grok_api_key = os.getenv("GROK_API_KEY")
 openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
 
@@ -33,7 +33,7 @@ MAX_TURNS = 30
 openrouter_client = AsyncOpenAI(base_url=OPENROUTER_BASE_URL, api_key=openrouter_api_key)
 deepseek_client = AsyncOpenAI(base_url=DEEPSEEK_BASE_URL, api_key=deepseek_api_key)
 grok_client = AsyncOpenAI(base_url=GROK_BASE_URL, api_key=grok_api_key)
-gemini_client = AsyncOpenAI(base_url=GEMINI_BASE_URL, api_key=google_api_key)
+gemini_client = AsyncOpenAI(base_url=GEMINI_BASE_URL, api_key=gemini_api_key)
 
 
 def get_model(model_name: str):
@@ -65,7 +65,7 @@ async def get_researcher_tool(mcp_servers, model_name) -> Tool:
 
 
 class Trader:
-    def __init__(self, name: str, lastname="Trader", model_name="gpt-4o-mini"):
+    def __init__(self, name: str, lastname="Trader", model_name="gemini-2.5-flash"):
         self.name = name
         self.lastname = lastname
         self.agent = None

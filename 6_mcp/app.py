@@ -175,9 +175,8 @@ def create_ui():
     ]
     trader_views = [TraderView(trader) for trader in traders]
 
-    with gr.Blocks(
-        title="Traders", css=css, js=js, theme=gr.themes.Default(primary_hue="sky"), fill_width=True
-    ) as ui:
+    with gr.Blocks() as ui:
+        gr.HTML(f"<style>{css}</style><script>{js}</script>")
         with gr.Row():
             for trader_view in trader_views:
                 trader_view.make_ui()
